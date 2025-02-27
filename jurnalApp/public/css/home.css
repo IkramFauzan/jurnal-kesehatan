@@ -1,0 +1,22 @@
+.fw-bold {
+    font-family: 'Poppins';font-size: 20px;
+}
+
+.container {
+    font-family: 'Poppins';
+}
+
+.header {
+    background: linear-gradient(135deg, #e70303, #c70000);
+    color: white;
+    padding: 20px 0;
+    border-radius: 16px;
+    text-align: center;
+    font-family: 'Poppins';
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.justify {
+    text-align: justify;
+}
+

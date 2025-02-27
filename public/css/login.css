@@ -1,0 +1,35 @@
+.login-container {
+    max-width: 400px;
+    margin: 50px auto;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+}
+
+.login-container h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+.btn-primary {
+    width: 100%;
+    padding: 10px;
+    border-radius: 10px;
+    transition: background-color 0.3s ease;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+}
+
+.header {
+    background: linear-gradient(135deg, #e70303, #c70000);
+    color: white;
+    padding: 20px 0;
+    border-radius: 16px;
+    text-align: center;
+    font-family: 'Poppins';
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
