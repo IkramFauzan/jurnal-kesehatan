@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('auth.auth')
 
 @push('styles')
 <link rel="stylesheet" href="{{ asset('css/register.css') }}">

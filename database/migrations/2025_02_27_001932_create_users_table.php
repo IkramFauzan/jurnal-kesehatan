@@ -13,9 +13,11 @@ return new class extends Migration {
             $table->string('afiliasi')->nullable(); // Afiliasi (opsional)
             $table->string('country');        // Negara
             $table->string('email')->unique(); // Email unik
-            $table->string('password');       // Password
+            $table->string('password');
+            $table->string('role')->default('user');
             $table->rememberToken();          // Token untuk "remember me"
-            $table->timestamps();             // created_at & updated_at
+            $table->timestamps();    
+            // created_at & updated_at
         });
     }
 

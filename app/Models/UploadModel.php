@@ -2,12 +2,11 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
 
-class Journal extends Model
+class UploadModel extends Model
 {
-    //
     use HasFactory;
 
     protected $table = 'upload_models';
@@ -15,6 +14,10 @@ class Journal extends Model
     protected $fillable = [
         'title', 'subtitle', 'volume', 'authors', 'pages', 'file_path', 
         'doi_link', 'views', 'downloads', 'status', 'upload_status', 
-        'users_id', 'alasan_penolakan', 'comment', 'keywords', 'rejection_reasons'
+        'users_id', 'alasan_penolakan', 'rejection_reasons', 'comment', 'keywords'
+    ];
+    
+    protected $casts = [
+        'rejection_reasons' => 'array',
     ];
 }

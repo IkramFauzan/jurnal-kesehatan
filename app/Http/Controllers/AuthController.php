@@ -13,6 +13,14 @@ class AuthController extends Controller
         return view('auth.login');
     }
 
+    public function showAdmin() {
+        return view('admin.manage');
+    }
+
+    public function showReview() {
+        return view('reviewer.review');
+    }
+    
     public function login(Request $request) {
         $credentials = $request->validate([
             'email' => 'required|email',
@@ -21,7 +29,16 @@ class AuthController extends Controller
     
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
-            return redirect()->intended('journals.dashboard')->with('success', 'Login berhasil!');
+            
+            $user = Auth::user();
+            
+            if ($user->role == 'admin') {
+                return redirect()->intended('/admin/manage')->with('success', 'Login berhasil!');
+            } elseif ($user->role == 'reviewer') {
+                return redirect()->intended('/review')->with('success', 'Login berhasil!');
+            } else {
+                return redirect()->intended('/dashboard')->with('success', 'Login berhasil!');
+            }
         }
     
         return back()->with('error', 'Email atau password salah.');
@@ -42,19 +59,24 @@ class AuthController extends Controller
             'terms' => 'accepted', // Untuk checkbox persetujuan
         ]);
     
-        User::create([
+        $user = User::create([
             'given_name' => $request->given_name,
             'family_name' => $request->family_name,
             'afiliasi' => $request->afiliasi,
             'country' => $request->country,
             'email' => $request->email,
             'password' => Hash::make($request->password),
+            // 'role' => 'user', // Set role default menjadi user
         ]);
+
+        $user->assignRole('user'); // Assign default role
+    
+        Auth::login($user);
     
         return redirect()->route('login')->with('success', 'Registrasi berhasil. Silakan login.');
     }
     
-
+    
     public function logout(Request $request) {
         Auth::logout();
         $request->session()->invalidate();
